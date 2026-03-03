@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AVCommander — Professional AV Control</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .card {
+            max-width: 500px;
+            width: 100%;
+            background: #2d1b3c;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+        }
+        
+        .top {
+            background: #7b4f9e;
+            padding: 40px 30px 20px;
+            text-align: center;
+        }
+        
+        /* Icon comment
+        .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        */
+        
+        h1 {
+            color: white;
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .subheader {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            color: #b79cd9;
+            font-size: 15px;
+            font-style: italic;
+        }
+        
+        .form-section {
+            padding: 30px 30px 40px;
+        }
+        
+        .description {
+            color: white;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 15px;
+            background: #3a2350;
+            padding: 20px;
+            border-radius: 16px;
+        }
+        
+        .description strong {
+            color: white;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1.5px solid #6b4f8a;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: inherit;
+            background: white;        
+            color: #1a0b2e;           
+        }
+        
+        input::placeholder, textarea::placeholder {
+            color: #6b4f8a;           
+            opacity: 1;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #a27bcf;
+            background: #f8f0ff;      
+        }
+        
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        button {
+            width: 100%;
+            padding: 16px;
+            background: #7b4f9e;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px 0 20px;
+            transition: background 0.2s;
+        }
+        
+        button:hover {
+            background: #9b6fc7;
+        }
+        
+        .privacy {
+            text-align: center;
+            font-size: 13px;
+            color: #b79cd9;
+        }
+        
+        .privacy a {
+            color: #d0bfff;
+            text-decoration: none;
+        }
+        
+        .privacy a:hover {
+            text-decoration: underline;
+        }
+        
+        .success {
+            display: none;
+            background: #5f3b7a;
+            color: #e0d0ff;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 14px;
+            border: 1px solid #a27bcf;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="top">
+            <!-- Icon comment
+            <div class="icon">🎚️</div>
+            -->
+            <h1>AVCommander app</h1>
+            <div class="subheader">(iPhone and iPad)</div>
+            <div class="tagline">Professional AV control</div>
+        </div>
+        
+        <div class="form-section">
+            <div class="description">
+                <strong>Turn your device into a professional AV control center.</strong><br><br>
+                Communicate with any equipment via <strong>TCP, UDP, HTTP, Telnet, or SSH</strong> to manage audio, video, DSP, and PTZ cameras.<br><br>
+                Build your own custom interface in any of 16 languages, adding your own buttons, toggles, and sliders to control it all, exactly the way you want.
+            </div>
+            
+            <form id="subscribeForm" target="hidden_iframe" method="POST" 
+                action="https://docs.google.com/forms/d/e/1yIe0nkLj5FbKWb1b9K-Sis8oQdkkAjyIrTMv7FK_6yI/formResponse">
+      
+                <input type="text" name="entry.1151277867" id="nameField" placeholder="Your name" required>
+                <input type="email" name="entry.2054839464" id="emailField" placeholder="Your email" required>
+                <textarea name="entry.1103374442" id="questionField" placeholder="Your question"></textarea>
+    
+                <button type="submit">Send</button>
+            </form>
+            
+            <iframe name="hidden_iframe" style="display:none"></iframe>
+            
+            <div id="successMessage" class="success">
+                Thanks you for your question.
+            </div>
+            
+            <div class="privacy">
+                <a href="#" id="privacyLink">Privacy Policy</a> • alexastafew@gmail.com
+            </div>
+        </div>
+    </div>
+    
+    <div id="privacyModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; padding: 20px; z-index: 1000;">
+        <div style="background: #2d1b3c; max-width: 400px; padding: 30px; border-radius: 20px; border: 1px solid #a27bcf;">
+            <h3 style="margin-bottom: 15px; color: white;">Privacy Policy</h3>
+            <p style="margin-bottom: 20px; color: #e0d0ff; line-height: 1.5;">We collect your email address only to provide AVCommander support. No spam. No data sharing.</p>
+            <button onclick="document.getElementById('privacyModal').style.display='none'" style="padding: 10px 20px; background: #7b4f9e; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 500;">Close</button>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('privacyLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('privacyModal').style.display = 'flex';
+        });
+        
+        document.getElementById('privacyModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+            document.getElementById('successMessage').style.display = 'block';
+            
+            document.getElementById('nameField').value = '';
+            document.getElementById('emailField').value = '';
+            document.getElementById('questionField').value = '';
+            
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+            
+            return true;
+        });
+    </script>
+</body>
+</html>
