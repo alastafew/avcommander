@@ -36,13 +36,6 @@
             text-align: center;
         }
         
-        /* Icon comment
-        .icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-        */
-        
         h1 {
             color: white;
             font-size: 32px;
@@ -156,9 +149,6 @@
 <body>
     <div class="card">
         <div class="top">
-            <!-- Icon comment
-            <div class="icon">🎚️</div>
-            -->
             <h1>AVCommander app</h1>
             <div class="subheader">(iPhone and iPad)</div>
             <div class="tagline">Professional AV control</div>
@@ -184,7 +174,7 @@
             <iframe name="hidden_iframe" style="display:none"></iframe>
             
             <div id="successMessage" class="success">
-                Thanks you for your question.
+                Thank you for your question.
             </div>
             
             <div class="privacy">
@@ -214,16 +204,20 @@
         });
         
         document.getElementById('subscribeForm').addEventListener('submit', function(e) {
+            // Показываем сообщение об успехе
             document.getElementById('successMessage').style.display = 'block';
             
+            // Очищаем поля формы
             document.getElementById('nameField').value = '';
             document.getElementById('emailField').value = '';
             document.getElementById('questionField').value = '';
             
+            // Скрываем сообщение через 5 секунд
             setTimeout(() => {
                 document.getElementById('successMessage').style.display = 'none';
             }, 5000);
             
+            // Разрешаем отправку формы
             return true;
         });
     </script>
