@@ -16,9 +16,10 @@
             background: white;
             min-height: 100vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             padding: 20px;
+            overflow-y: auto;
         }
         
         .card {
@@ -28,11 +29,12 @@
             border-radius: 30px;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.7);
+            margin: 20px auto;
         }
         
         .top {
             background: #7b4f9e;
-            padding: 40px 30px 20px;
+            padding: 30px 30px 20px;
             text-align: center;
         }
         
@@ -55,16 +57,16 @@
         }
         
         .form-section {
-            padding: 30px 30px 40px;
+            padding: 25px 30px 30px;
         }
         
         .description {
             color: white;
-            margin-bottom: 25px;
-            line-height: 1.6;
-            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            font-size: 14px;
             background: #3a2350;
-            padding: 20px;
+            padding: 16px;
             border-radius: 16px;
         }
         
@@ -74,11 +76,11 @@
         
         input, textarea {
             width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 12px;
+            margin-bottom: 12px;
             border: 1.5px solid #6b4f8a;
             border-radius: 12px;
-            font-size: 15px;
+            font-size: 14px;
             font-family: inherit;
             background: white;        
             color: #1a0b2e;           
@@ -96,21 +98,21 @@
         }
         
         textarea {
-            min-height: 80px;
+            min-height: 70px;
             resize: vertical;
         }
         
         button {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             background: #7b4f9e;
             color: white;
             border: none;
             border-radius: 12px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            margin: 10px 0 20px;
+            margin: 5px 0 15px;
             transition: background 0.2s;
         }
         
@@ -137,12 +139,59 @@
             display: none;
             background: #5f3b7a;
             color: #e0d0ff;
-            padding: 15px;
+            padding: 12px;
             border-radius: 12px;
-            margin: 15px 0;
+            margin: 10px 0;
             text-align: center;
             font-size: 14px;
             border: 1px solid #a27bcf;
+        }
+        
+        .modal-content {
+            background: #2d1b3c;
+            max-width: 400px;
+            width: 90%;
+            max-height: 80vh;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #a27bcf;
+            overflow-y: auto;
+            margin: 20px;
+        }
+        
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .modal-content p {
+            margin-bottom: 20px;
+            color: #e0d0ff;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .modal-content button {
+            width: auto;
+            padding: 10px 25px;
+            margin: 0;
+            background: #7b4f9e;
+        }
+        
+        #privacyModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.8);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 1000;
+            overflow-y: auto;
         }
     </style>
 </head>
@@ -158,7 +207,7 @@
             <div class="description">
                 <strong>Turn your device into a professional AV control center.</strong><br><br>
                 Communicate with any equipment via <strong>TCP, UDP, HTTP, Telnet, or SSH</strong> to manage audio, video, DSP, and PTZ cameras.<br><br>
-                Build your own custom interface in any of 16 languages, adding your own buttons, toggles, and sliders to control it all, exactly the way you want.
+                Build your own custom interface in any of <strong>17 languages</strong>, adding your own buttons, toggles, and sliders to control it all, exactly the way you want.
             </div>
             
             <form id="subscribeForm" target="hidden_iframe" method="POST" 
@@ -178,16 +227,38 @@
             </div>
             
             <div class="privacy">
-                <a href="#" id="privacyLink">Privacy Policy</a> • alexastafew@gmail.com
+                <a href="#" id="privacyLink">Privacy Policy</a>
             </div>
         </div>
     </div>
     
-    <div id="privacyModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); align-items: center; justify-content: center; padding: 20px; z-index: 1000;">
-        <div style="background: #2d1b3c; max-width: 400px; padding: 30px; border-radius: 20px; border: 1px solid #a27bcf;">
-            <h3 style="margin-bottom: 15px; color: white;">Privacy Policy</h3>
-            <p style="margin-bottom: 20px; color: #e0d0ff; line-height: 1.5;">We collect your email address only to provide AVCommander support. No spam. No data sharing.</p>
-            <button onclick="document.getElementById('privacyModal').style.display='none'" style="padding: 10px 20px; background: #7b4f9e; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: 500;">Close</button>
+    <div id="privacyModal">
+        <div class="modal-content">
+            <h3>Privacy Policy</h3>
+            <p>
+                This Privacy Policy outlines the approach of this App regarding the handling of private data, aiming to prevent the leakage of your data. Please read this Privacy Policy carefully.<br><br>
+                
+                <strong>1. Private Information</strong><br>
+                This application is a standalone app that does not collect any personal information from users, nor does it upload any user information.<br><br>
+                
+                <strong>2. Data Sharing Authorization</strong><br>
+                This application does not share any user data with third parties. All device configurations and settings remain exclusively on your device.<br><br>
+                
+                <strong>3. Information Storage</strong><br>
+                All request information collected by AVCmd will be stored on the current device. This information will not be uploaded to any server and will only be viewed and shared by the user.<br><br>
+                
+                <strong>4. Information Security</strong><br>
+                The HTTPS decryption certificate for each device is generated individually. Unless you actively share it, others cannot obtain your certificate.<br><br>
+                
+                <strong>5. Network Security</strong><br>
+                This application communicates with AV equipment over local network using TCP, UDP, Telnet and HTTP protocols. For HTTP connections requiring authentication, your login credentials are stored locally on your device. You are responsible for maintaining the security of your network and connected devices.<br><br>
+                
+                <strong>6. Privacy Concerns</strong><br>
+                If you have any questions or concerns regarding our privacy policy or data handling practices, please email us at alexastafew@gmail.com<br><br>
+                
+                Last Updated: March 8, 2026
+            </p>
+            <button onclick="document.getElementById('privacyModal').style.display='none'">Close</button>
         </div>
     </div>
     
@@ -204,20 +275,16 @@
         });
         
         document.getElementById('subscribeForm').addEventListener('submit', function(e) {
-            // Показываем сообщение об успехе
             document.getElementById('successMessage').style.display = 'block';
             
-            // Очищаем поля формы
             document.getElementById('nameField').value = '';
             document.getElementById('emailField').value = '';
             document.getElementById('questionField').value = '';
             
-            // Скрываем сообщение через 5 секунд
             setTimeout(() => {
                 document.getElementById('successMessage').style.display = 'none';
             }, 5000);
             
-            // Разрешаем отправку формы
             return true;
         });
     </script>
